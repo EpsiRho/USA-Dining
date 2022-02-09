@@ -294,8 +294,8 @@
                                     <media:AcrylicBrush x:Key="CustomAcrylicBrush" 
                                                         BackgroundSource="Backdrop"
                                                         TintOpacity="0.6" 
-                                                        TintColor="#FF000000" 
-                                                        FallbackColor="#FF000000" />
+                                                        TintColor="{ThemeResource SystemAltLowColor}" 
+                                                        FallbackColor="{ThemeResource SystemAltLowColor}" />
 
                                 </Grid.Resources>
                                 <Button HorizontalAlignment="Right"
