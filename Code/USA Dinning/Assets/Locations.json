@@ -1,0 +1,459 @@
+{
+  "locations": [
+    {
+      "Name": "Fresh Food Company",
+      "IsOpen": "Closed",
+      "Address": "6351 Tonsmeire Drive",
+      "Mon": {
+        "Open": "7:00AM",
+        "Close": "9:00PM"
+      },
+      "Tue": {
+        "Open": "7:00AM",
+        "Close": "9:00PM"
+      },
+      "Wed": {
+        "Open": "7:00AM",
+        "Close": "9:00PM"
+      },
+      "Thu": {
+        "Open": "7:00AM",
+        "Close": "9:00PM"
+      },
+      "Fri": {
+        "Open": "7:00AM",
+        "Close": "9:00PM"
+      },
+      "Sat": {
+        "Open": "9:00AM",
+        "Close": "9:00PM"
+      },
+      "Sun": {
+        "Open": "9:00AM",
+        "Close": "9:00PM"
+      },
+      "Group": "None",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/Generic/Salad.ashx?mh=270&mw=540&hash=0293B0868696DB9751BE54F9B7CD6BCD30C1B7EF"
+    },
+    {
+      "Name": "Delta Deli",
+      "IsOpen": "Closed",
+      "Address": "251 Delta Loop",
+      "Mon": {
+        "Open": "5:00PM",
+        "Close": "12:00AM"
+      },
+      "Tue": {
+        "Open": "5:00PM",
+        "Close": "12:00AM"
+      },
+      "Wed": {
+        "Open": "5:00PM",
+        "Close": "12:00AM"
+      },
+      "Thu": {
+        "Open": "5:00PM",
+        "Close": "12:00AM"
+      },
+      "Fri": {
+        "Open": "5:00PM",
+        "Close": "12:00AM"
+      },
+      "Sat": {
+        "Open": "5:00PM",
+        "Close": "12:00AM"
+      },
+      "Sun": {
+        "Open": "5:00PM",
+        "Close": "12:00AM"
+      },
+      "Group": "None",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/Generic/Burger.ashx?mh=270&mw=540&hash=78053F792A487452F8971E16C40BCAEEFAC7D3BB"
+    },
+    {
+      "Name": "Einstein Bros. Health Sciences",
+      "IsOpen": "Closed",
+      "Address": "5721 USA Drive North",
+      "Mon": {
+        "Open": "7:30AM",
+        "Close": "2:30PM"
+      },
+      "Tue": {
+        "Open": "7:30AM",
+        "Close": "2:30PM"
+      },
+      "Wed": {
+        "Open": "7:30AM",
+        "Close": "2:30PM"
+      },
+      "Thu": {
+        "Open": "7:30AM",
+        "Close": "2:30PM"
+      },
+      "Fri": {
+        "Open": "7:30AM",
+        "Close": "2:00PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "Coffee",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/National/EinsteinBros.ashx?mh=270&mw=540&hash=4BEDB24C90637659613ED41125DC1B99156517EE"
+    },
+    {
+      "Name": "Shelby Hall Café",
+      "IsOpen": "Closed",
+      "Address": "150 Jaguar Dr",
+      "Mon": {
+        "Open": "7:30AM",
+        "Close": "5:00PM"
+      },
+      "Tue": {
+        "Open": "7:30AM",
+        "Close": "5:00PM"
+      },
+      "Wed": {
+        "Open": "7:30AM",
+        "Close": "5:00PM"
+      },
+      "Thu": {
+        "Open": "7:30AM",
+        "Close": "5:00PM"
+      },
+      "Fri": {
+        "Open": "7:30AM",
+        "Close": "3:00PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "Coffee",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/Generic/CoffeeBeans.ashx?mh=270&mw=540&hash=1E55DCCE49B6920B0E9637189E129DE1905412D1"
+    },
+    {
+      "Name": "Starbucks",
+      "IsOpen": "Closed",
+      "Address": "5901 USA Drive N",
+      "Mon": {
+        "Open": "8:00AM",
+        "Close": "10:00PM"
+      },
+      "Tue": {
+        "Open": "8:00AM",
+        "Close": "10:00PM"
+      },
+      "Wed": {
+        "Open": "8:00AM",
+        "Close": "10:00PM"
+      },
+      "Thu": {
+        "Open": "8:00AM",
+        "Close": "10:00PM"
+      },
+      "Fri": {
+        "Open": "8:00AM",
+        "Close": "5:00PM"
+      },
+      "Sat": {
+        "Open": "10:00AM",
+        "Close": "4:00PM"
+      },
+      "Sun": {
+        "Open": "1:00PM",
+        "Close": "10:00PM"
+      },
+      "Group": "Coffee",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/National/Starbucks.ashx?mh=270&mw=540&hash=C00797E6EBD7C1A69ED9D166FC5DE85B447D6AED"
+    },
+    {
+      "Name": "Prowler Bowls",
+      "IsOpen": "Closed",
+      "Address": "51 Stadium Blvd",
+      "Mon": {
+        "Open": "3:00PM",
+        "Close": "8:00PM"
+      },
+      "Tue": {
+        "Open": "3:00PM",
+        "Close": "8:00PM"
+      },
+      "Wed": {
+        "Open": "3:00PM",
+        "Close": "8:00PM"
+      },
+      "Thu": {
+        "Open": "3:00PM",
+        "Close": "8:00PM"
+      },
+      "Fri": {
+        "Open": "3:00PM",
+        "Close": "8:00PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "None",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/Generic/Smoothie2.ashx?mh=270&mw=540&hash=E62FC0E627B8633543BA7A67CA901651BC27D94D"
+    },
+    {
+      "Name": "Chick-fil-A",
+      "IsOpen": "Closed",
+      "Address": "350 Campus Dr.",
+      "Mon": {
+        "Open": "8:00AM",
+        "Close": "6:00PM"
+      },
+      "Tue": {
+        "Open": "8:00AM",
+        "Close": "6:00PM"
+      },
+      "Wed": {
+        "Open": "8:00AM",
+        "Close": "6:00PM"
+      },
+      "Thu": {
+        "Open": "8:00AM",
+        "Close": "5:00PM"
+      },
+      "Fri": {
+        "Open": "8:00AM",
+        "Close": "5:00PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "SCFC",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/National/Chik-fil-A.ashx?mh=270&mw=540&hash=24188B2340DC482AAEDB9C5E03E771B97225B8F6"
+    },
+    {
+      "Name": "Pizza Hut",
+      "IsOpen": "Closed",
+      "Address": "350 Campus Dr.",
+      "Mon": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Tue": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Wed": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Thu": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Fri": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "SCFC",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/National/PizzaHut.ashx?mh=270&mw=540&hash=68119A35537AA1B5B767254ED0879E2C7B8732D4"
+    },
+    {
+      "Name": "Moe's Southwestern Grill",
+      "IsOpen": "Closed",
+      "Address": "350 Campus Dr.",
+      "Mon": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Tue": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Wed": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Thu": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Fri": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "SCFC",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/National/Moes.ashx?mh=270&mw=540&hash=EDC745A56FEAA9973F3C4F9944DD568FF9F9BEFC"
+    },
+    {
+      "Name": "Panda Express",
+      "IsOpen": "Closed",
+      "Address": "350 Campus Dr.",
+      "Mon": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Tue": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Wed": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Thu": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Fri": {
+        "Open": "10:30AM",
+        "Close": "3:30PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "SCFC",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/National/PandaExpress.ashx?mh=270&mw=540&hash=AF6E80EB482652EBB48B1EF6D2D762035F38891B"
+    },
+    {
+      "Name": "Greens to Go + P.O.D. Express @ Student Center",
+      "IsOpen": "Closed",
+      "Address": "350 Campus Dr.",
+      "Mon": {
+        "Open": "8:00AM",
+        "Close": "4:00PM"
+      },
+      "Tue": {
+        "Open": "8:00AM",
+        "Close": "4:00PM"
+      },
+      "Wed": {
+        "Open": "8:00AM",
+        "Close": "4:00PM"
+      },
+      "Thu": {
+        "Open": "8:00AM",
+        "Close": "4:00PM"
+      },
+      "Fri": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "POD",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/Proprietary/Green2Go.ashx?mh=270&mw=540&hash=6A1B3429E5719EFF61A32EBE147BC8FEBAE40D3D"
+    },
+    {
+      "Name": "P.O.D. Express @ Humanities",
+      "IsOpen": "Closed",
+      "Address": "307 N. University Blvd.",
+      "Mon": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Tue": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Wed": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Thu": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Fri": {
+        "Open": "8:00AM",
+        "Close": "2:00PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "POD",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/Proprietary/POD.ashx?mh=270&mw=540&hash=F74568ED077566A8234855E8A920D7F1A6A0F6E9"
+    },
+    {
+      "Name": "P.O.D. Express @ Mitchell College of Business",
+      "IsOpen": "Closed",
+      "Address": "5811 USA Drive S.",
+      "Mon": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Tue": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Wed": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Thu": {
+        "Open": "8:00AM",
+        "Close": "3:00PM"
+      },
+      "Fri": {
+        "Open": "8:00AM",
+        "Close": "2:00PM"
+      },
+      "Sat": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Sun": {
+        "Open": "Closed",
+        "Close": "Closed"
+      },
+      "Group": "POD",
+      "BackgroundImage": "https://usouthal.campusdish.com/-/media/Global/All-Divisions/Images/LocationsMenus/NavigationCards/Proprietary/POD2.ashx?mh=270&mw=540&hash=AB1C40A5D7839BA0822D6B2C38502D9C2F2C61B2"
+    }
+  ]
+}
