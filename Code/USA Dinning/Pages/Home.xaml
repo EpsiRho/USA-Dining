@@ -298,6 +298,11 @@
                                                         FallbackColor="#FF000000" />
 
                                 </Grid.Resources>
+                                <Button HorizontalAlignment="Right"
+                                        VerticalAlignment="Top"
+                                        Canvas.ZIndex="10">
+                                    <SymbolIcon Symbol="Favorite"/>
+                                </Button>
                                 <Rectangle Fill="{ThemeResource CustomAcrylicBrush}"/>
                                 <StackPanel>
                                     <Grid>
@@ -335,7 +340,7 @@
                                            Margin="05,15,0,13"
                                            TextWrapping="Wrap"/>
                                     </RelativePanel>
-                                    <TextBlock Text="7:00AM - 3:00PM"
+                                    <TextBlock Text="{x:Bind DateGlance}"
                                        Foreground="White"
                                        RelativePanel.RightOf="MapSymbol"
                                        FontSize="16"

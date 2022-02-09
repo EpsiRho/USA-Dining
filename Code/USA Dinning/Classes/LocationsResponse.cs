@@ -63,6 +63,7 @@ namespace USA_Dinning.Classes
         public Sun Sun { get; set; }
         public string Group { get; set; }
         public string BackgroundImage { get; set; }
+        public string DateGlance { get; set; }
     }
 
 
