@@ -136,6 +136,7 @@ namespace CampusDish
         public string ProductId { get; set; }
         public string PeriodId { get; set; }
         public string StationId { get; set; }
+        public string StationName { get; set; }
         public int StationRank { get; set; }
         public object MenuId { get; set; }
         public string CatalogId { get; set; }

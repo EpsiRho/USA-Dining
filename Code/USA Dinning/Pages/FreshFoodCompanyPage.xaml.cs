@@ -36,12 +36,15 @@ namespace USA_Dinning.Pages
         // Page Vars
         ObservableCollection<string> DatesList { get; set; }
         ObservableCollection<CampusDish.MenuPeriod> MealTypeList { get; set; }
+        ObservableCollection<GroupInfoList> ProductList { get; set; }
 
         public FreshFoodCompanyPage()
         {
             this.InitializeComponent();
             DatesList = new ObservableCollection<string>();
             MealTypeList = new ObservableCollection<CampusDish.MenuPeriod>();
+            ProductList = new ObservableCollection<GroupInfoList>();
+            ProductsCVS.Source = ProductList;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -102,7 +105,7 @@ namespace USA_Dinning.Pages
                     DateTime StartTemp = DateTime.Parse(type.UtcMealPeriodStartTime);
                     DateTime EndTemp = DateTime.Parse(type.UtcMealPeriodEndTime);
 
-                    if(StartTemp.Hour > 12)
+                    if (StartTemp.Hour > 12)
                     {
                         type.TimeString = $"{StartTemp.ToString("hh:mm")}PM";
                     }
@@ -130,8 +133,35 @@ namespace USA_Dinning.Pages
                     MealType.SelectedIndex = 0;
                     MealTypeProgress.Visibility = Visibility.Collapsed;
                 });
+
+                foreach(var item in menu.Menu.MenuProducts)
+                {
+                    item.StationName = menu.Menu.MenuStations.FirstOrDefault(o => o.StationId == item.StationId).Name;
+                }
+
+                var query = from item in menu.Menu.MenuProducts
+                            group item by item.StationName into g
+                            orderby g.Key
+                            select new GroupInfoList(g) { Key = g.Key };
+
+                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                {
+                    ProductsCVS.Source = new ObservableCollection<GroupInfoList>(query);
+                });
+
+
             }
         }
+
+        // Move into own file later
+        public class GroupInfoList : List<object>
+        {
+            public GroupInfoList(IEnumerable<object> items) : base(items)
+            {
+            }
+            public object Key { get; set; }
+        }
+
 
 
         CompositionPropertySet _props;

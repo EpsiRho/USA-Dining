@@ -16,12 +16,13 @@
                             TintOpacity="0.6" 
                             TintColor="{ThemeResource SystemAltLowColor}" 
                             FallbackColor="{ThemeResource SystemAltLowColor}" />
-
+        <CollectionViewSource x:Name="ProductsCVS" IsSourceGrouped="True"/>
     </Page.Resources>
 
     <Grid>
         <Grid>
             <ListView x:Name="MenuItemsList"
+                      ItemsSource="{x:Bind ProductsCVS.View, Mode=OneWay}"
                       Margin="0,0,0,0">
                 <ListView.Header>
                     <Grid x:Name="HeaderTopContainer">
@@ -165,117 +166,27 @@
                         </Grid>
                     </Grid>
                 </ListView.Header>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
-                <ListViewItem>
-                    <TextBlock Text="AAAAAAAAAAAAAAAAAA"/>
-                </ListViewItem>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <ItemsStackPanel AreStickyGroupHeadersEnabled="False"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.HeaderTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Key}" />
+                            </DataTemplate>
+                        </GroupStyle.HeaderTemplate>
+                    </GroupStyle>
+                </ListView.GroupStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="cd:MenuProduct">
+                        <Grid>
+                            <TextBlock Text="{x:Bind Product.MarketingName}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
                 
             </ListView>
         </Grid>
