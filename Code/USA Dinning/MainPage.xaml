@@ -10,7 +10,11 @@
     muxc:BackdropMaterial.ApplyToRootOrPageBackground="True">
 
     <Grid>
-        <muxc:NavigationView x:Name="TopNav" PaneDisplayMode="Top">
+        <muxc:NavigationView x:Name="TopNav" 
+                             PaneDisplayMode="Top"
+                             IsBackEnabled="True"
+                             ItemInvoked="TopNav_ItemInvoked"
+                             BackRequested="TopNav_BackRequested">
             <Frame x:Name="contentFrame"/>
         </muxc:NavigationView>
     </Grid>

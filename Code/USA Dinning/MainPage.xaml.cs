@@ -31,6 +31,25 @@ namespace USA_Dinning
             CampusDishHandler.DefaultURL = "https://usouthal.campusdish.com";
         }
 
+        private void TopNav_ItemInvoked(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewItemInvokedEventArgs args)
+        {
+            if (args.IsSettingsInvoked)
+            {
 
+            }
+            else
+            {
+
+            }
+        }
+
+        private void TopNav_BackRequested(Microsoft.UI.Xaml.Controls.NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewBackRequestedEventArgs args)
+        {
+            var MyFrame = contentFrame;
+            if (MyFrame.CanGoBack)
+            {
+                MyFrame.GoBack();
+            }
+        }
     }
 }

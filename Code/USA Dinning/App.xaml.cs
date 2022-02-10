@@ -17,6 +17,7 @@ using Windows.UI.Xaml.Navigation;
 using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI;
+using Windows.UI.Core;
 
 namespace USA_Dinning
 {

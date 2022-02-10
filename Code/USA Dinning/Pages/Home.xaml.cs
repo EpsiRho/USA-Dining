@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using Newtonsoft.Json;
 using System.Threading;
 using System.Globalization;
+using Windows.UI.Xaml.Media.Animation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -36,11 +37,25 @@ namespace USA_Dinning.Pages
         public Home()
         {
             this.InitializeComponent();
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             EnableSorting = false;
             AllLocations = new ObservableCollection<Location>();
             locations = new ObservableCollection<Location>();
             Thread t = new Thread(GetLocations);
             t.Start();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            Location loc = AnimationHelper.CurrentLocation;
+            var gridViewItem = LocationsGrid.ContainerFromItem(loc) as GridViewItem;
+
+            ConnectedAnimation animation =
+                ConnectedAnimationService.GetForCurrentView().GetAnimation("forwardAnimation");
+            if (animation != null)
+            {
+                animation.TryStart(gridViewItem);
+            }
         }
 
         public async void GetLocations()
@@ -169,9 +184,13 @@ namespace USA_Dinning.Pages
                         break;
                 }
 
+                if(loc.DateGlance.Contains("12:00AM"))
+                {
+                    timeClose = timeClose.AddDays(1);
+                }
                
 
-                if(DateTime.Now.TimeOfDay > timeOpen.TimeOfDay && DateTime.Now.TimeOfDay < timeClose.TimeOfDay)
+                if(DateTime.Now > timeOpen && DateTime.Now < timeClose)
                 {
                     loc.IsOpen = "Open";
                 }
@@ -246,6 +265,24 @@ namespace USA_Dinning.Pages
                     break;
             }
             EnableSorting = true;
+        }
+
+        private void LocationsGrid_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Location loc = (Location)e.ClickedItem;
+            AnimationHelper.CurrentLocation = loc;
+            var gridViewItem = LocationsGrid.ContainerFromItem(e.ClickedItem) as GridViewItem;
+
+            ConnectedAnimationService.GetForCurrentView().PrepareToAnimate("forwardAnimation", gridViewItem);
+
+            if (loc.Name == "Fresh Food Company")
+            {
+                this.Frame.Navigate(typeof(FreshFoodCompanyPage), loc, new SuppressNavigationTransitionInfo());
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(JsonMenuPage), loc, new SuppressNavigationTransitionInfo());
+            }
         }
     }
 }
