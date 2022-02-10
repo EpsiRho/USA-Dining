@@ -56,5 +56,31 @@ namespace CampusDish
 
             return json;
         }
+        public static async Task<ValidDatesJson> GetValidDates(string locationId)
+        {
+            // The rest client with the URL to request from
+            RestClient client = new RestClient($"{DefaultURL}/api/menus/GetMenuCalendar?");
+            
+            // Build the request
+            RestRequest request = new RestRequest();
+            request.Method = Method.Get;
+            request.AddQueryParameter("locationId", locationId);
+
+            // Send the request
+            var response = await client.GetAsync(request);
+
+            // Deserialize Json
+            ValidDatesJson json = null;
+            try
+            {
+                json = JsonConvert.DeserializeObject<ValidDatesJson>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message, ex);
+            }
+
+            return json;
+        }
     }
 }

@@ -26,6 +26,7 @@ namespace CampusDish
         public bool IsActive { get; set; }
         public string UtcMealPeriodStartTime { get; set; }
         public string UtcMealPeriodEndTime { get; set; }
+        public string TimeString { get; set; }
     }
 
     public class Category
@@ -165,29 +166,29 @@ namespace CampusDish
 
     public class Menu
     {
-        public string MenuId { get; set; }
-        public string Name { get; set; }
-        public string LocationId { get; set; }
+        public string? MenuId { get; set; }
+        public string? Name { get; set; }
+        public string? LocationId { get; set; }
         public object LocationName { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public DateTime? StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public List<Allergen> Allergens { get; set; }
         public List<SpecialDiet> SpecialDiets { get; set; }
         public List<MenuPeriod> MenuPeriods { get; set; }
         public List<MenuProduct> MenuProducts { get; set; }
         public List<MenuStation> MenuStations { get; set; }
-        public bool ShowCategories { get; set; }
+        public bool? ShowCategories { get; set; }
         public List<Category> Categories { get; set; }
-        public bool DisplayPriceOnTheMenu { get; set; }
-        public bool DisplayOnlyCurrentDayMenu { get; set; }
-        public bool OnlyShowCurrentDaysOnlineOrdering { get; set; }
-        public bool HideEatWellIconsFromMenu { get; set; }
-        public bool ImportPrimaIngredients { get; set; }
-        public bool DisplayFoodPreferenceFilter { get; set; }
-        public int MenuSourceSystem { get; set; }
-        public bool ShowLegend { get; set; }
-        public bool DisplayProductImageInFoodOrderingMenu { get; set; }
-        public bool DisplayProductImageInDailyMenu { get; set; }
+        public bool? DisplayPriceOnTheMenu { get; set; }
+        public bool? DisplayOnlyCurrentDayMenu { get; set; }
+        public bool? OnlyShowCurrentDaysOnlineOrdering { get; set; }
+        public bool? HideEatWellIconsFromMenu { get; set; }
+        public bool? ImportPrimaIngredients { get; set; }
+        public bool? DisplayFoodPreferenceFilter { get; set; }
+        public int? MenuSourceSystem { get; set; }
+        public bool? ShowLegend { get; set; }
+        public bool? DisplayProductImageInFoodOrderingMenu { get; set; }
+        public bool? DisplayProductImageInDailyMenu { get; set; }
     }
 
     public class Item
