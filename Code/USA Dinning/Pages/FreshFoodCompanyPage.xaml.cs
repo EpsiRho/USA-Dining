@@ -37,6 +37,8 @@ namespace USA_Dinning.Pages
         ObservableCollection<string> DatesList { get; set; }
         ObservableCollection<CampusDish.MenuPeriod> MealTypeList { get; set; }
         ObservableCollection<GroupInfoList> ProductList { get; set; }
+        bool CanLoadMenu { get; set; }
+        bool NeedsStartup { get; set; }
 
         public FreshFoodCompanyPage()
         {
@@ -45,6 +47,8 @@ namespace USA_Dinning.Pages
             MealTypeList = new ObservableCollection<CampusDish.MenuPeriod>();
             ProductList = new ObservableCollection<GroupInfoList>();
             ProductsCVS.Source = ProductList;
+            CanLoadMenu = true;
+            NeedsStartup = true;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -75,64 +79,77 @@ namespace USA_Dinning.Pages
             }
 
             Thread t = new Thread(LoadMenu);
-            t.Start();
+            t.Start(new MenuLoadArgs() { date = "02/10/2022", period = ""});
         }
 
-        public async void LoadMenu()
+        public async void LoadMenu(object a)
         {
-            var times = await CampusDish.CampusDishHandler.GetValidDates("7503");
-            foreach (var time in times.AvailableDates)
-            {
-                string str = $"{time.Month}/{time.Day}/{time.Year}";
-
-                await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
-                {
-                    DatesList.Add(str);
-                });
-            }
-
-            string select = $"{times.Now.Month}/{times.Now.Day}/{times.Now.Year}";
+            CanLoadMenu = false;
+            MenuLoadArgs args = a as MenuLoadArgs;
             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
             {
-                DateSelection.SelectedItem = select;
-                DateSelectionProgress.Visibility = Visibility.Collapsed;
+                ProductsCVS.Source = new ObservableCollection<GroupInfoList>();
             });
-            var menu = await CampusDish.CampusDishHandler.GetDailyMenu("7503", "02/10/2022");
-            if (menu != null)
+
+            if (NeedsStartup)
             {
-                foreach (var type in menu.Menu.MenuPeriods)
+                var times = await CampusDish.CampusDishHandler.GetValidDates("7503");
+                foreach (var time in times.AvailableDates)
                 {
-                    DateTime StartTemp = DateTime.Parse(type.UtcMealPeriodStartTime);
-                    DateTime EndTemp = DateTime.Parse(type.UtcMealPeriodEndTime);
-
-                    if (StartTemp.Hour > 12)
-                    {
-                        type.TimeString = $"{StartTemp.ToString("hh:mm")}PM";
-                    }
-                    else
-                    {
-                        type.TimeString = $"{StartTemp.ToString("hh:mm")}AM";
-                    }
-
-                    if (EndTemp.Hour > 12)
-                    {
-                        type.TimeString += $" - {EndTemp.ToString("hh:mm")}PM";
-                    }
-                    else
-                    {
-                        type.TimeString += $" - {EndTemp.ToString("hh:mm")}AM";
-                    }
+                    string str = $"{time.Month}/{time.Day}/{time.Year}";
 
                     await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                     {
-                        MealTypeList.Add(type);
+                        DatesList.Add(str);
                     });
                 }
+                string select = $"{times.Now.Month}/{times.Now.Day}/{times.Now.Year}";
                 await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
-                    MealType.SelectedIndex = 0;
-                    MealTypeProgress.Visibility = Visibility.Collapsed;
+                    DateSelection.SelectedItem = select;
+                    DateSelectionProgress.Visibility = Visibility.Collapsed;
                 });
+            }
+
+            var menu = await CampusDish.CampusDishHandler.GetDailyMenu("7503", args.date, "", args.period);
+            if (menu != null)
+            {
+                if (NeedsStartup)
+                {
+                    foreach (var type in menu.Menu.MenuPeriods)
+                    {
+                        DateTime StartTemp = DateTime.Parse(type.UtcMealPeriodStartTime);
+                        DateTime EndTemp = DateTime.Parse(type.UtcMealPeriodEndTime);
+
+                        if (StartTemp.Hour > 12)
+                        {
+                            type.TimeString = $"{StartTemp.ToString("hh:mm")}PM";
+                        }
+                        else
+                        {
+                            type.TimeString = $"{StartTemp.ToString("hh:mm")}AM";
+                        }
+
+                        if (EndTemp.Hour > 12)
+                        {
+                            type.TimeString += $" - {EndTemp.ToString("hh:mm")}PM";
+                        }
+                        else
+                        {
+                            type.TimeString += $" - {EndTemp.ToString("hh:mm")}AM";
+                        }
+
+                        await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                        {
+                            MealTypeList.Add(type);
+                        });
+                    }
+                    await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+                    {
+                        MealType.SelectedIndex = 0;
+                        MealTypeProgress.Visibility = Visibility.Collapsed;
+                    });
+                }
 
                 foreach(var item in menu.Menu.MenuProducts)
                 {
@@ -147,9 +164,13 @@ namespace USA_Dinning.Pages
                 await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                 {
                     ProductsCVS.Source = new ObservableCollection<GroupInfoList>(query);
+                    MenuLoadProgress.Visibility = Visibility.Collapsed;
+                    DateSelection.IsEnabled = true;
+                    MealType.IsEnabled = true;
                 });
 
-
+                CanLoadMenu = true;
+                NeedsStartup = false;
             }
         }
 
@@ -280,6 +301,32 @@ namespace USA_Dinning.Pages
         {
             Thread t = new Thread(SetupShyHeader);
             t.Start();
+        }
+
+        private void DateSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!CanLoadMenu) { return; }
+            DateSelection.IsEnabled = false;
+            MealType.IsEnabled = false;
+            MenuLoadProgress.Visibility = Visibility.Visible;
+            Thread t = new Thread(LoadMenu);
+            string d = (string)DateSelection.SelectedItem;
+            string m = ((CampusDish.MenuPeriod)MealType.SelectedItem).PeriodId;
+            var args = new MenuLoadArgs() { date = d, period = m };
+            t.Start(args);
+        }
+
+        private void MealType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (!CanLoadMenu) { return; }
+            DateSelection.IsEnabled = false;
+            MealType.IsEnabled = false;
+            MenuLoadProgress.Visibility = Visibility.Visible;
+            Thread t = new Thread(LoadMenu);
+            string d = (string)DateSelection.SelectedItem;
+            string m = ((CampusDish.MenuPeriod)MealType.SelectedItem).PeriodId;
+            var args = new MenuLoadArgs() { date = d, period = m };
+            t.Start(args);
         }
     }
 }

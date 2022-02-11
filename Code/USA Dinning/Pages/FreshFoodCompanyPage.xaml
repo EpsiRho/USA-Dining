@@ -21,6 +21,9 @@
 
     <Grid>
         <Grid>
+            <controls:ProgressBar IsIndeterminate="True"
+                                  VerticalAlignment="Bottom"
+                                  x:Name="MenuLoadProgress"/>
             <ListView x:Name="MenuItemsList"
                       ItemsSource="{x:Bind ProductsCVS.View, Mode=OneWay}"
                       Margin="0,0,0,0">
@@ -108,12 +111,12 @@
                                     <!-- Sorting Controls -->
                                     <ScrollViewer Margin="360,45,20,45">
                                         <TextBlock x:Name="DescriptionTextBox"
-                                                           TextWrapping="Wrap"
-                                                           VerticalAlignment="Center"
-                                                           FontSize="18"
-                                                           HorizontalAlignment="Stretch"
-                                                           IsHitTestVisible="False"
-                                                           Margin="0,0,10,0"/>
+                                                   TextWrapping="Wrap"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="18"
+                                                   HorizontalAlignment="Stretch"
+                                                   IsHitTestVisible="False"
+                                                   Margin="0,0,10,0"/>
                                     </ScrollViewer>
 
                                 </Grid>
@@ -121,45 +124,49 @@
                         </Border>
                         <Grid x:Name="SortingContainer">
                             <GridView HorizontalAlignment="Center"
-                                  Margin="20,420,0,0"
-                                  x:Name="SortingButtonsGrid"
-                                  SelectionMode="None">
+                                      Margin="20,420,0,0"
+                                      x:Name="SortingButtonsGrid"
+                                      SelectionMode="None">
                                 <GridViewItem Margin="0,0,10,0">
                                     <StackPanel>
                                         <TextBlock Text="Date"
-                                               FontSize="20"/>
+                                                   FontSize="20"/>
                                         <ComboBox x:Name="DateSelection"
-                                              ItemsSource="{x:Bind DatesList}"
-                                              Margin="0,0,0,0"
-                                              Height="35"
-                                              FontSize="18"
-                                              MinWidth="135"/>
+                                                  ItemsSource="{x:Bind DatesList}"
+                                                  SelectionChanged="DateSelection_SelectionChanged"
+                                                  Margin="0,0,0,0"
+                                                  Height="35"
+                                                  IsEnabled="False"
+                                                  FontSize="18"
+                                                  MinWidth="135"/>
                                         <controls:ProgressBar IsIndeterminate="True"
-                                                          x:Name="DateSelectionProgress"/>
+                                                              x:Name="DateSelectionProgress"/>
                                     </StackPanel>
                                 </GridViewItem>
                                 <GridViewItem Margin="0,0,10,0">
                                     <StackPanel>
                                         <TextBlock Text="Period"
-                                               FontSize="20"/>
+                                                   FontSize="20"/>
                                         <ComboBox x:Name="MealType"
-                                              ItemsSource="{x:Bind MealTypeList}"
-                                              Margin="0,0,0,0"
-                                              Height="35"
-                                              MinWidth="135">
+                                                  ItemsSource="{x:Bind MealTypeList}"
+                                                  Margin="0,0,0,0"
+                                                  SelectionChanged="MealType_SelectionChanged"
+                                                  Height="35"
+                                                  IsEnabled="False"
+                                                  MinWidth="135">
                                             <ComboBox.ItemTemplate>
                                                 <DataTemplate x:DataType="cd:MenuPeriod">
                                                     <StackPanel>
                                                         <TextBlock Text="{x:Bind Name}"
-                                                               FontSize="18"/>
+                                                                   FontSize="18"/>
                                                         <TextBlock Text="{x:Bind TimeString}"
-                                                               FontSize="16"/>
+                                                                   FontSize="16"/>
                                                     </StackPanel>
                                                 </DataTemplate>
                                             </ComboBox.ItemTemplate>
                                         </ComboBox>
                                         <controls:ProgressBar IsIndeterminate="True"
-                                                          x:Name="MealTypeProgress"/>
+                                                              x:Name="MealTypeProgress"/>
                                     </StackPanel>
                                 </GridViewItem>
                             </GridView>
@@ -176,7 +183,8 @@
                     <GroupStyle>
                         <GroupStyle.HeaderTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Key}" />
+                                <TextBlock Text="{Binding Key}"
+                                           FontSize="24"/>
                             </DataTemplate>
                         </GroupStyle.HeaderTemplate>
                     </GroupStyle>
@@ -184,7 +192,20 @@
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="cd:MenuProduct">
                         <Grid>
-                            <TextBlock Text="{x:Bind Product.MarketingName}"/>
+                            <StackPanel Margin="0,5,0,5">
+                                <TextBlock Text="{x:Bind Product.MarketingName}"
+                                           FontSize="18"
+                                           TextDecorations="Underline"
+                                           FontWeight="SemiBold"/>
+                                <TextBlock Text="{x:Bind Product.ShortDescription}"/>
+                                <RelativePanel>
+                                    <TextBlock Text="{x:Bind Product.Calories}" 
+                                               x:Name="CaloriesText"/>
+                                    <TextBlock Text="Calories"
+                                               Margin="3,0,0,0"
+                                               RelativePanel.RightOf="CaloriesText"/>
+                                </RelativePanel>
+                            </StackPanel>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

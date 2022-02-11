@@ -125,6 +125,7 @@
     <Compile Include="Classes\CampusDishHandler.cs" />
     <Compile Include="Classes\LocationsResponse.cs" />
     <Compile Include="Classes\MenuJsonRoot.cs" />
+    <Compile Include="Classes\MenuLoadArgs.cs" />
     <Compile Include="Classes\ValidDatesJson.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
